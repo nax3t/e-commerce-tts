@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users
   root 'store_front#all_items'
+
+  post 'add_to_cart' => 'cart#add_to_cart'
+  get 'view_order' => 'cart#view_order'
+  get 'checkout' => 'cart#checkout'
+
+  devise_for :users
 
   get 'all' => 'store_front#all_items'
 	get 'categorical' => 'store_front#items_by_category'
