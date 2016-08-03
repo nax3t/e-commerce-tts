@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'store_front#all_items'
 
   get 'all' => 'store_front#all_items'
