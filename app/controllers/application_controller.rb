@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def brands
+    # sorts through all brand names and picks them out individually
   	@brands = Product.pluck(:brand).sort.uniq!
   	if @brands.nil?
   		@brands = Product.pluck(:brand).sort
