@@ -4,7 +4,7 @@ class StoreFrontController < ApplicationController
   end
 
   def items_by_category
- 		@category = Category.find(params[:cat_id])
+ 		@category = Category.find(params[:id])
  		@products = Product.all
  		@products_by_cat = []
 

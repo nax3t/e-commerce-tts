@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   get 'all' => 'store_front#all_items'
-	get 'categorical' => 'store_front#items_by_category'
+	get 'categorical/:id' => 'store_front#items_by_category', as: 'categorical'
   get 'branding' => 'store_front#items_by_brand'
 
   resources :products
