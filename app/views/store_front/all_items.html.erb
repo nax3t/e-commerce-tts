@@ -24,11 +24,13 @@
             <h4 class="modal-title" id="myModalLabel"><%= product.name %></h4>
           </div>
           <div class="modal-body">
+            <p><%= link_to image_tag(product.image.url, width: '300px'), product_path(product) %></p>
             <p>Price: <%= number_to_currency(product.price) %></p>
             <p><%= product.description %></p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <%= link_to 'Buy Now', product_path(product), class: 'btn btn-primary' %>
           </div>
         </div>
       </div>
