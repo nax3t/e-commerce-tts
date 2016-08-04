@@ -34,7 +34,6 @@ gem 'starter_generators'
 gem 'better_errors'
 gem 'devise'
 gem 'paperclip'
-gem 'cancancan'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'figaro'
 
