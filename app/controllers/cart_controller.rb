@@ -38,16 +38,16 @@ class CartController < ApplicationController
   	@order.sales_tax = sum * 0.08
   	@order.grand_total = sum + @order.sales_tax
   	@order.save
-
-  	@line_items.each do |line_item|
-  		line_item.product.quantity -= line_item.quantity
-  		line_item.product.save
-  	end
   end
 
   def order_complete
     @order = Order.find(params[:order_id])
     @amount = (@order.grand_total.to_f.round(2) * 100).to_i
+    @line_items = LineItem.all
+    @line_items.each do |line_item|
+      line_item.product.quantity -= line_item.quantity
+      line_item.product.save
+    end
     LineItem.destroy_all
 
     customer = Stripe::Customer.create(
@@ -68,12 +68,6 @@ class CartController < ApplicationController
 
   def empty_cart
     @order = Order.find(params[:id])
-    @line_items = LineItem.all
-    @line_items.each do |line_item|
-      line_item.product.quantity += line_item.quantity
-      line_item.product.save
-    end
-
     @order.destroy
     LineItem.destroy_all
 
