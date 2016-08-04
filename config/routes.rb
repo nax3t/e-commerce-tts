@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   post 'add_to_cart' => 'cart#add_to_cart'
   get 'view_order' => 'cart#view_order'
   get 'checkout' => 'cart#checkout'
-
+  post 'order_complete' => 'cart#order_complete'
+  delete 'empty_cart/:id' => 'cart#empty_cart', as: 'empty_cart'
+  
   devise_for :users
 
   get 'all' => 'store_front#all_items'

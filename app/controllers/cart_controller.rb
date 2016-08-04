@@ -43,7 +43,40 @@ class CartController < ApplicationController
   		line_item.product.quantity -= line_item.quantity
   		line_item.product.save
   	end
+  end
 
-  	LineItem.destroy_all
+  def order_complete
+    @order = Order.find(params[:order_id])
+    @amount = (@order.grand_total.to_f.round(2) * 100).to_i
+    LineItem.destroy_all
+
+    customer = Stripe::Customer.create(
+      :email => current_user.email,
+      :card => params[:stripeToken]
+    )
+
+    charge = Stripe::Charge.create(
+      :customer => customer.id,
+      :amount => @amount,
+      :description => 'Rails Stripe customer',
+      :currency => 'usd'
+    )
+
+    rescue Stripe::CardError => e
+    flash[:error] = e.message
+  end
+
+  def empty_cart
+    @order = Order.find(params[:id])
+    @line_items = LineItem.all
+    @line_items.each do |line_item|
+      line_item.product.quantity += line_item.quantity
+      line_item.product.save
+    end
+
+    @order.destroy
+    LineItem.destroy_all
+
+    redirect_to root_path
   end
 end
