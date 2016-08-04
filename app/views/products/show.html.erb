@@ -1,44 +1,44 @@
-<p>
+<p><!-- Displays product name -->
   <strong>Name:</strong>
   <%= @product.name %>
 </p>
 
-<p>
+<p><!-- Displays product price -->
   <strong>Price:</strong>
   <%= number_to_currency @product.price %>
 </p>
 
-<p>
+<p><!-- Displays product description-->
   <strong>Description:</strong>
   <%= @product.description %>
 </p>
 
-<p>
+<p><!-- Displays product quantity -->
   <strong>Quantity:</strong>
   <%= @product.quantity %>
 </p>
 
-<p>
+<p><!-- Displays product brand -->
   <strong>Brand:</strong>
   <%= @product.brand %>
 </p>
 
-<p>
+<p><!-- Displays product rating -->
   <strong>Rating:</strong>
   <%= @product.rating %>
 </p>
 
-<p>
+<p><!-- Displays product category -->
   <strong>Category:</strong>
   <%= @product.category.name %>
 </p>
 
-<p>
-  <%= form_tag(add_to_cart_path(product_id: @product.id)) do %>
-    <%= number_field_tag :quantity, nil, placeholder: "How many?" %><br>
-    <%= submit_tag "Add to cart", class: "btn btn-danger" %>
-  <% end %>
-</p>
+<p><!-- Displays form to add items to cart -->
+  <%= form_tag(add_to_cart_path(product_id: @product.id)) do %><!-- form declaration. Also passes product id to target url -->
+    <%= number_field_tag :quantity, nil, placeholder: "How many?" %><br><!-- Sets the input field for user (only accepts numbers and had a preset nil option that displays text :"How many" before input -->
+    <%= submit_tag "Add to cart", class: "btn btn-danger" %><!-- submit button. 'btn-danger' has bootstrap display it as red -->
+  <% end %><!-- end of ruby from -->
+</p><!-- closing </p> for form section -->
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<%= link_to 'Edit', edit_product_path(@product) %> | <!-- provides a button to navigate to product page. | for formatting with back button -->
+<%= link_to 'Back', products_path %><!-- provides button to navigate back to the prodcuts page -->

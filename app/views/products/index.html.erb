@@ -1,39 +1,39 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p><!-- not 100% certain. I guess it displays notices if there are any. I thought that happened automatically for some reason -->
 
-<h1>Products</h1>
+<h1>Products</h1><!-- Page Heading -->
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Description</th>
-      <th>Quantity</th>
-      <th>Brand</th>
-      <th>Rating</th>
-      <th>Category</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<table class="table"><!-- Start of table -->
+  <thead><!-- table header section openening tag -->
+    <tr><!-- table row opening tag -->
+      <th>Name</th><!-- Sets first table row heading to 'Name' -->
+      <th>Price</th><!-- '' to 'Price' -->
+      <th>Description</th><!-- '' to 'Description -->
+      <th>Quantity</th><!-- '' to 'Quantity' -->
+      <th>Brand</th><!-- '' to 'Brand' -->
+      <th>Rating</th><!-- '' to 'Rating' -->
+      <th>Category</th><!-- '' to 'Category -->
+      <th colspan="3"></th><!-- sets the width of the columns? -->
+    </tr><!-- closing tag for table row section -->
+  </thead><!-- closing tag for table header section -->
 
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= number_to_currency product.price %></td>
-        <td><%= product.description %></td>
-        <td><%= product.quantity %></td>
-        <td><%= product.brand %></td>
-        <td><%= product.rating %></td>
-        <td><%= product.category.name %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <tbody><!-- opening tag for table body section -->
+    <% @products.each do |product| %><!-- each loop that iterates through @products -->
+      <tr><!-- opening tag for table row section -->
+        <td><%= product.name %></td><!-- displays product name in table row/column -->
+        <td><%= number_to_currency product.price %></td><!-- price, and converts to currency format -->
+        <td><%= product.description %></td><!-- description -->
+        <td><%= product.quantity %></td><!-- quantity -->
+        <td><%= product.brand %></td><!-- brand -->
+        <td><%= product.rating %></td><!-- rating -->
+        <td><%= product.category.name %></td><!-- category name -->
+        <td><%= link_to 'Show', product %></td><!-- provides a link to product show page -->
+        <td><%= link_to 'Edit', edit_product_path(product) %></td><!-- provides link to edit product page -->
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td><!-- provides link to destroy product action -->
+      </tr><!-- end of table row -->
+    <% end %><!-- end of each loop -->
+  </tbody><!-- end of table body -->
+</table><!-- end of table -->
 
-<br>
+<br><!-- line break for styling -->
 
-<%= link_to 'New Product', new_product_path %>
+<%= link_to 'New Product', new_product_path %><!-- provides link to new product action -->

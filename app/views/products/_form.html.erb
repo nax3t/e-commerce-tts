@@ -1,20 +1,20 @@
-<%= form_for(product) do |f| %>
-  <% if product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+<%= form_for(product) do |f| %><!-- start of form. targets the 'product' that is passed in by the render element of other pages. -->
+  <% if product.errors.any? %><!-- start of if section for dealing with errors -->
+    <div id="error_explanation"><!-- sets div id. is this for bootstrap styling?  -->
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2><!-- displays error message, and pluralizes the word error, if there are more than one -->
 
-      <ul>
-      <% product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <ul><!-- opening tag for unordered list -->
+      <% product.errors.full_messages.each do |message| %><!-- iterates through each error -->
+        <li><%= message %></li><!-- displays the error message in a list item -->
+      <% end %><!-- end of each loop -->
+      </ul><!-- closing unordered list tag -->
+    </div><!-- closing div tag for id="error_explanation" above -->
+  <% end %><!-- end of if statement -->
 
-  <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+  <div class="form-group"><!-- start of form section for name -->
+    <%= f.label :name %><!-- displays the name of the product for the input field label -->
+    <%= f.text_field :name %><!-- provides a text field for inputing name for the new product  -->
+  </div><!-- end of form group -->
 
   <div class="form-group">
     <%= f.label :price %>

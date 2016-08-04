@@ -1,15 +1,15 @@
-<h1>My Cart</h1>
+<h1>My Cart</h1><!-- page heading -->
+
+<div><!-- start of div for displaying line items -->
+	<% @line_items.each do |line_item| %><!-- iterates through @line_items -->
+		<p><strong><%= line_item.product.name %></strong></p><!-- displays name -->
+		<p><%= number_to_currency line_item.product.price %></p><!-- displays price in currency format-->
+		<p>Qty: <%= line_item.quantity %></p><!-- displays quantity -->
+		<p>Subtotal: <%= number_to_currency line_item.line_item_total %></p><!-- displays subtotal -->
+		<hr><!-- horizontal rule -->
+	<% end %><!-- end of each loop -->
+</div><!-- end of line item div -->
 
 <div>
-	<% @line_items.each do |line_item| %>
-		<p><strong><%= line_item.product.name %></strong></p>
-		<p><%= number_to_currency line_item.product.price %></p>
-		<p>Qty: <%= line_item.quantity %></p>
-		<p>Subtotal: <%= number_to_currency line_item.line_item_total %></p>
-		<hr>
-	<% end %>
-</div>
-
-<div>
-	<%= link_to "Proceed to Checkout?", checkout_path, class: 'btn btn-success' %>
+	<%= link_to "Proceed to Checkout?", checkout_path, class: 'btn btn-success' %><!-- link to checkout action -->
 </div>

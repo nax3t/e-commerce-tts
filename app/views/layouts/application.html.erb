@@ -1,93 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>ECommerce2</title>
+<!DOCTYPE html><!-- Doctype declaration -->
+<html lang="en"><!-- specifies html as english (?) -->
+<head><!-- start of head section -->
+  <meta charset="utf-8"><!-- sets charset to utf-8 -->
+  <title>ECommerce2</title><!-- sets title for website (shown in the browser tab -->
 
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.0.2/yeti/bootstrap.min.css">
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.2/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.0.2/yeti/bootstrap.min.css"> <!-- links to bootswatch css -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.2/css/font-awesome.min.css"><!-- links to font-awesome css -->
 
+  <!-- forget what this is called. but basically can set css within the page while in this section -->
   <style>
     /* Only necessary if you are using navbar-fixed-top */
     body {
-      padding-top: 50px;
+      padding-top: 50px; /* sets the top padding for body elements within the page/website to 50px */
     }
   </style>
+  <!-- end of style section -->
 
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    "application", :media => "all" %><!-- links to the application css page? -->
+  <%= javascript_include_tag "application" %><!-- links to the application javascript page? -->
+  <%= csrf_meta_tags %><!-- something -->
 
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script><!-- bootstrap css -->
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- sets more metadata -->
+</head><!-- end of head section -->
+<body><!-- start of body section -->
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation"><!-- start of navbar section -->
     <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+    <div class="navbar-header"><!-- start of header for the navbar (?) -->
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"><!-- don't remember what this toggle button is for or even where to see it on the page -->
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </button>
-      <%= link_to Rails.application.class.parent_name, root_url, :class => "navbar-brand" %>
-    </div>
+      </button><!-- end of mystery button... for now. -->
+      <%= link_to Rails.application.class.parent_name, root_url, :class => "navbar-brand" %><!-- sets the navbar header to a link to the root as well as displays the application name -->
+    </div><!-- end of navbar header section -->
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"><!-- not sure what this collapse section is. maybe that mystery button corresponds to this and would make this section appear/dissapear? -->
+      <ul class="nav navbar-nav"><!-- start of the main section of the navbar -->
         <!-- Dashboard -->
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Categories", categories_url %></li>
-              <li><%= link_to "Products", products_url %></li>
-            </ul>
-        </li>
+        <li class="dropdown"><!-- start of a dropdown section -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a><!-- don't understand everything going on here, but 'Admin' is where the displayed text for the dropdown button goes -->
+            <ul class="dropdown-menu"><!-- unordered list which the dropdown is to be composed of -->
+              <li><%= link_to "Categories", categories_url %></li><!-- dropdown item. links to categories index page -->
+              <li><%= link_to "Products", products_url %></li><!-- dropdown item. links to products index -->
+            </ul><!-- end of dropdown list -->
+        </li><!-- end of the Admin navbar dropdown -->
         <!-- Categories -->
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+        <li class="dropdown"><!-- start of the navbar dropdown for 'Categories' -->
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a><!-- same as above, but for Categories -->
           <ul class="dropdown-menu">
-            <% @categories.each do |cat| %>
-            <li><%= link_to cat.name, categorical_path(cat_id: cat.id) %></li>
-            <% end %>
-          </ul>
-        </li>
+            <% @categories.each do |cat| %><!-- iterates through each item in @categories -->
+            <li><%= link_to cat.name, categorical_path(cat_id: cat.id) %></li><!-- adds each item in categories as a link to the respective category front-end display -->
+            <% end %><!-- end of each loop -->
+          </ul><!-- end of dropdown list -->
+        </li><!-- end of the Categories dropdown element -->
         <!-- Brands -->
-        <li class="dropdown">
+        <li class="dropdown"><!-- following is same as above, except for brands -->
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Brands <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <% @brands.each do |brand| %>
             <li><%= link_to brand, branding_path(brand: brand) %></li>
             <% end %>
           </ul>
-        </li>
-        <li><%= link_to 'Cart', view_order_path %></li>
-      </ul>
-      <p class="navbar-text pull-right">
-      <% if user_signed_in? %>
-        Logged in as <strong><%= current_user.email %></strong>.
-        <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-      <% else %>
-        <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-        <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-      <% end %>
-      </p>
+        </li><!-- end of navbar dropdwon for 'Brands' -->
+        <li><%= link_to 'Cart', view_order_path %></li><!-- links to view_order action -->
+      </ul><!-- end of navbar unordered list -->
+      <p class="navbar-text pull-right"><!-- start of section pulled right in the navbar (user information, login/out) -->
+      <% if user_signed_in? %><!-- if user is signed in -->
+        Logged in as <strong><%= current_user.email %></strong>.<!-- displays 'logged in as' message -->
+        <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |<!-- edit profile link -->
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %><!-- logout link -->
+      <% else %><!-- if user is not signed in -->
+        <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |<!-- sign up link -->
+        <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %><!-- login link -->
+      <% end %><!-- end of login conditional -->
+      </p><!-- end of navbar pull right section -->
     </div><!-- /.navbar-collapse -->
-  </nav>
+  </nav><!-- end of navbar -->
 
-  <div class="container">
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
+  <div class="container"><!-- start of div section (used for displaying notices) -->
+    <% if notice %><!-- if there is a notice -->
+      <p class="alert alert-success"><%= notice %></p><!-- display notice -->
+    <% end %><!-- end of if statement -->
+    <% if alert %><!-- if there is an alert -->
+      <p class="alert alert-danger"><%= alert %></p><!-- display alert -->
+    <% end %><!-- end of if statement -->
 
-    <%= yield %>
-  </div>
-</body>
-</html>
+    <%= yield %><!-- oh snap! is this what causes all the other pages to be loaded inside the application view?? -->
+  </div><!-- end of div container -->
+</body><!-- end of body section -->
+</html><!-- end of html -->

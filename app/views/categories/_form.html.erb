@@ -1,22 +1,22 @@
-<%= form_for(category) do |f| %>
-  <% if category.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
+<%= form_for(category) do |f| %><!-- start of form, targeting category (passed in from render components on other pages) -->
+  <% if category.errors.any? %><!-- if there are any errors submitting the form -->
+    <div id="error_explanation"><!-- div for dipslaying errors -->
+      <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2><!-- displays preliminary error message and pluralizes the word error as needed -->
 
-      <ul>
-      <% category.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <ul><!-- start of unordered list for displaying errors -->
+      <% category.errors.full_messages.each do |message| %><!-- iteratesthrough each error -->
+        <li><%= message %></li><!-- displays error message -->
+      <% end %><!-- end of if statement -->
+      </ul><!-- end of list for displaying errors -->
+    </div><!-- end of div for displaying errors -->
+  <% end %><!-- end of if statement -->
 
-  <div class="field">
+  <div class="field"><!-- input field for category name -->
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
 
-  <div class="actions">
+  <div class="actions"><!-- submit button for form -->
     <%= f.submit %>
   </div>
-<% end %>
+<% end %><!-- end of form -->

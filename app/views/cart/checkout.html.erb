@@ -1,11 +1,11 @@
-<h1>Thanks for shopping with us!</h1>
-<p>Let's review your order:</p>
+<h1>Thanks for shopping with us!</h1><!-- page heading -->
+<p>Let's review your order:</p><!-- page text -->
 
-<% @order.order_items.each do |key, value| %>
+<% @order.order_items.each do |key, value| %><!-- iterates through @order.order_items order_items is a hash of {:product => quantity} -->
 	<ul>
-		<li><%= Product.find(key).name %> - <%= value %></li>
+		<li><%= Product.find(key).name %> - <%= value %></li><!-- displays product name and quantity in its own li in its own ul -->
 	</ul>
-<% end %>
+<% end %><!-- end of each loop -->
 <p>
-	<strong>Order Total:</strong> <%= number_to_currency @order.grand_total %>
+	<strong>Order Total:</strong> <%= number_to_currency @order.grand_total %><!-- displays order total -->
 </p>

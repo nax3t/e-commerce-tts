@@ -1,27 +1,27 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p><!-- displays notice -->
 
-<h1>Categories</h1>
+<h1>Categories</h1><!-- page heading -->
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<table class="table"><!-- start of table -->
+  <thead><!-- start of table head -->
+    <tr><!-- start of table row -->
+      <th>Name</th><!-- sets first table row header to 'Name' -->
+      <th colspan="3"></th><!-- sets column width? -->
+    </tr><!-- end of table row -->
+  </thead><!-- end of table head -->
 
-  <tbody>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= category.name %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <tbody><!-- start of table body -->
+    <% @categories.each do |category| %><!-- iterates through @categories -->
+      <tr><!-- start of table row -->
+        <td><%= category.name %></td><!-- puts name in first table column -->
+        <td><%= link_to 'Show', category %></td><!-- provides link to category show action -->
+        <td><%= link_to 'Edit', edit_category_path(category) %></td><!-- provides link to category edit action -->
+        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td><!-- provides link to category destroy action -->
+      </tr><!-- end of table row -->
+    <% end %><!-- end of each loop -->
+  </tbody><!-- end of table body -->
+</table><!-- end of table -->
 
-<br>
+<br><!-- line break for styling -->
 
-<%= link_to 'New Category', new_category_path %>
+<%= link_to 'New Category', new_category_path %><!-- provides link to new category action -->

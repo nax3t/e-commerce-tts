@@ -1,12 +1,12 @@
-<h1>All <%= @brand_name %> Products</h1>
+<h1>All <%= @brand_name %> Products</h1> <!-- Page Heading @brand_name in erb tags makes this variable -->
 
-<div class="row">
-    <% @products_by_brand.each do |product| %>
-    <div class="col-md-4">
-        <div class="well center-it">
-            <p><%= image_tag product.image.url, width: '100%' %></p>
-            <h3><%= link_to product.name, product %></h3>
-            <p><%= number_to_currency product.price %></p>
+<div class="row"><!-- begginging of bootstrap row section -->
+    <% @products_by_brand.each do |product| %><!-- start of each loop -->
+    <div class="col-md-4"><!-- sets bootstrap column width for each iteration -->
+        <div class="well center-it"><!-- centers the following content within the bootstrap column? -->
+            <p><%= image_tag product.image.url, width: '100%' %></p><!-- displays product image and sets the width -->
+            <h3><%= link_to product.name, product %></h3><!-- displays product name and provides link to show page -->
+            <p><%= number_to_currency product.price %></p><!-- see commenting on all items view page -->
             <p>
                 <a href="#" data-toggle="modal" data-target="#myModal_<%= product.id %>">
                     <span class="glyphicon glyphicon-plus"></span> quick info

@@ -1,38 +1,40 @@
+<!-- Page Heading -->
 <h1>Welcome to our E-commerce Store</h1>
 <p>Have a look around :)<p>
 
-<div class="row">
-    <% @products.each do |product| %>
-    <div class="col-md-4">
-        <div class="well center-it">
-            <p><%= image_tag product.image.url, height: '100px' %></p>
-            <h3><%= link_to product.name, product %></h3>
-            <p><%= number_to_currency product.price %></p>
+
+<div class="row"><!-- Sets up bootstrap row -->
+    <% @products.each do |product| %><!-- iterates through products -->
+    <div class="col-md-4"><!-- sets bootstrap column width for this div -->
+        <div class="well center-it"><!-- centers in bootstrap column? would need to look up well -->
+            <p><%= image_tag product.image.url, height: '100px' %></p><!-- shows the picture for the iterated product. also sets inline styling, fixing height -->
+            <h3><%= link_to product.name, product %></h3><!-- displays product name and makes it a link to the products show page -->
+            <p><%= number_to_currency product.price %></p><!-- displays iterated products price converts it to currency format -->
             <p>
-                <a href="#" data-toggle="modal" data-target="#myModal_<%= product.id %>">
-                    <span class="glyphicon glyphicon-plus"></span> quick info
+                <a href="#" data-toggle="modal" data-target="#myModal_<%= product.id %>"><!-- reference to use the modal code below -->
+                    <span class="glyphicon glyphicon-plus"></span> quick info<!-- what is displayed for the modal button (glyphicon image and text) -->
                 </a>
-            </p>
-        </div>
-    </div>
+            </p><!-- end of modal button section. used a <p> instead of a <div> for some reason -->
+        </div><!-- end of bootstrap class="well center-it" -->
+    </div><!-- end of bootstrap column div -->
     <!-- Modal -->
-    <div class="modal fade" id="myModal_<%= product.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel"><%= product.name %></h4>
-          </div>
-          <div class="modal-body">
-            <p>Price: <%= number_to_currency(product.price) %></p>
-            <p><%= product.description %></p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <% end %>
-</div>
+    <div class="modal fade" id="myModal_<%= product.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"><!-- start of modal html. id matches data-target of above reference -->
+      <div class="modal-dialog" role="document"><!-- ?? -->
+        <div class="modal-content"><!-- more modal formating. not very clear to me yet what exactly it does -->
+          <div class="modal-header"><!-- beginning of the header for the modal popup -->
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><!-- button to close the modal(?) -->
+            <h4 class="modal-title" id="myModalLabel"><%= product.name %></h4><!-- displays product name inside modal.. inside modal header -->
+          </div><!-- end of modal header div -->
+          <div class="modal-body"><!-- beginning of modal body section -->
+            <p>Price: <%= number_to_currency(product.price) %></p><!-- displays price in modal body -->
+            <p><%= product.description %></p><!-- displays product description in modal bocy -->
+          </div><!-- end of modal body section -->
+          <div class="modal-footer"><!-- beginning of modal footer section -->
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button><!-- another button to close the modal (?) -->
+          </div><!-- end of modal footer section -->
+        </div><!-- ending div tag for part of modal formatting -->
+      </div><!-- same as above -->
+    </div><!-- end of modal -->
+    <% end %><!-- end of @products.each loop -->
+</div><!-- end of bootstrap row section -->
 
